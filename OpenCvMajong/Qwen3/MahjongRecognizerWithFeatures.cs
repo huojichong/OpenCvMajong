@@ -16,15 +16,20 @@ public class MahjongRecognizerWithFeatures
         // 如果你想使用 SIFT (注意：SIFT 在 OpenCV 中可能需要非自由模块)
         // _detector = OpenCvSharp.SIFT.Create();
     }
+    public static Point2d Point2fToPoint2d(Point2f pf)
+    {
+        return new Point2d(((int)pf.X), ((int)pf.Y));
+    }
 
     /// <summary>
     /// 从游戏截图中识别所有麻将牌
     /// </summary>
     /// <param name="screenshot">游戏截图</param>
     /// <returns>二维数组，表示每个位置的牌面类型</returns>
-    public string[,] RecognizeMahjongBoard(Mat screenshot)
+    public string[,] RecognizeMahjongBoard(string  filepath)
     {
         // 1. 预处理：转换为灰度图
+        var screenshot = Cv2.ImRead(filepath);
         Mat grayScreenshot = new Mat();
         Cv2.CvtColor(screenshot, grayScreenshot, ColorConversionCodes.BGR2GRAY);
 
@@ -33,8 +38,8 @@ public class MahjongRecognizerWithFeatures
         Mat boardRegion = grayScreenshot[boardRect];
 
         // 3. 分割棋盘为一个个单元格
-        int rows = 10;
-        int cols = 9;
+        int rows = 12;
+        int cols = 10;
         int cellHeight = boardRegion.Height / rows;
         int cellWidth = boardRegion.Width / cols;
 
@@ -101,25 +106,17 @@ public class MahjongRecognizerWithFeatures
                     // 9. 使用 findHomography 和 RANSAC 筛选内点
                     try
                     {
-                        Mat homography = new Mat();
-                        OutputArray mask =  OutputArray.Create(homography);
-                        // 调用 FindHomography
-                        // Cv2.FindHomography(
-                        //     srcList, // 源点
-                        //     dstList, // 目标点
-                        //     HomographyMethods.Ransac, // 方法
-                        //     3.0, // 距离阈值
-                        //     mask // 输出掩码 (用于存储内点/外点标记)
-                        //     // 最后两个参数 maxIters 和 confidence 通常可以省略，使用默认值
-                        // );
+                        // Mat homography = new Mat();
+                        Mat mask = new Mat();
+                        Cv2.FindHomography(srcList.Select(m=>new Point2d(m.X,m.Y)), dstList.Select(m => new Point2d(m.X,m.Y)), HomographyMethods.Ransac, 3.0, mask);
 
                         // 计算内点数量
                         int inlierCount = 0;
-                        // for (int i = 0; i < mask.Rows; i++)
-                        // {
-                        //     if (mask.At<byte>(i, 0) > 0)
-                        //         inlierCount++;
-                        // }
+                        for (int i = 0; i < mask.Rows; i++)
+                        {
+                            if (mask.At<byte>(i, 0) > 0)
+                                inlierCount++;
+                        }
 
                         // 更新最佳匹配
                         if (inlierCount > bestInlierCount)
