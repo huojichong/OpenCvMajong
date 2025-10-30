@@ -16,130 +16,130 @@
       <None Update="Pics\Daily_Mahjong_Match.jpg">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\11.png">
+      <None Update="Cards\Autumn.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\12.png">
+      <None Update="Cards\Bamboo.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\13.png">
+      <None Update="Cards\Chrysan.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\14.png">
+      <None Update="Cards\EastWind.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\15.png">
+      <None Update="Cards\EightBmb.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\16.png">
+      <None Update="Cards\EightDots.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\17.png">
+      <None Update="Cards\EightRank.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\18.png">
+      <None Update="Cards\FiveBmb.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\19.png">
+      <None Update="Cards\FiveDots.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\21.png">
+      <None Update="Cards\FiveRank.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\22.png">
+      <None Update="Cards\FourBmb.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\23.png">
+      <None Update="Cards\FourDots.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\24.png">
+      <None Update="Cards\FourRank.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\25.png">
+      <None Update="Cards\GreenDrg.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\26.png">
+      <None Update="Cards\NineBmb.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\27.png">
+      <None Update="Cards\NineDots.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\28.png">
+      <None Update="Cards\NineRank.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\29.png">
+      <None Update="Cards\NorthWind.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\31.png">
+      <None Update="Cards\OneBmb.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\32.png">
+      <None Update="Cards\OneDots.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\33.png">
+      <None Update="Cards\OneRank.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\34.png">
+      <None Update="Cards\Orchid.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\35.png">
+      <None Update="Cards\Plum.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\36.png">
+      <None Update="Cards\RedDrg.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\37.png">
+      <None Update="Cards\SevenBmb.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\38.png">
+      <None Update="Cards\SevenDots.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\39.png">
+      <None Update="Cards\SevenRank.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\41.png">
+      <None Update="Cards\SixBmb.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\42.png">
+      <None Update="Cards\SixDots.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\43.png">
+      <None Update="Cards\SixRank.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\44.png">
+      <None Update="Cards\SouthWind.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\45.png">
+      <None Update="Cards\Spring.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\46.png">
+      <None Update="Cards\Summer.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\47.png">
+      <None Update="Cards\ThreeBmb.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\51.png">
+      <None Update="Cards\ThreeDots.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\52.png">
+      <None Update="Cards\ThreeRank.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\53.png">
+      <None Update="Cards\TwoBmb.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\54.png">
+      <None Update="Cards\TwoDots.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\61.png">
+      <None Update="Cards\TwoRank.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\62.png">
+      <None Update="Cards\WestWind.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\63.png">
+      <None Update="Cards\WhiteDrg.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="Cards\64.png">
+      <None Update="Cards\Winter.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

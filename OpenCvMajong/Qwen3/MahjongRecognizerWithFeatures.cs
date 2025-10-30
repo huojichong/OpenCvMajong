@@ -69,7 +69,7 @@ public class MahjongRecognizerWithFeatures
             for (int col = 0; col < cols; col++)
             {
                 // 提取当前单元格
-                Rect cellRect = new Rect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
+                Rect cellRect = new Rect(col * cellWidth + 5, row * cellHeight + 5, cellWidth - 5, cellHeight - 5);
                 Mat cell = boardRegion[cellRect];
 
                 Cv2.ImWrite("tempBoard/"+row + "_" + col + ".png", cell);

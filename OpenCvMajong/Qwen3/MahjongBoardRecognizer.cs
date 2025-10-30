@@ -17,7 +17,7 @@ namespace OpenCvMajong.Qwen3
         /// </summary>
         /// <param name="screenshotPath">游戏截图路径</param>
         /// <returns>二维字符串数组，表示棋盘上的牌面</returns>
-        public string[,] RecognizeBoard(string screenshotPath)
+        public string[,] MatchTemplate(string screenshotPath)
         {
             // 1. 加载图像
             Mat image = Cv2.ImRead(screenshotPath);

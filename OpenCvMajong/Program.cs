@@ -7,17 +7,6 @@ class Program
     static void Main(string[] args)
     {
         
-        var files = Directory.GetFiles("Cards", "*.png");
-        foreach (var file in files)
-        {
-            // Cards cards;
-            var fileName = Path.GetFileNameWithoutExtension(file);
-            var newName = (Cards)Convert.ToInt32(fileName);
-            var mat = Cv2.ImRead(file);
-            mat.ImWrite("Out/" + newName + ".png");
-            // File.Move(file,);
-        }
-        
         MahjongExecute.Execute();
 
         

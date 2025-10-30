@@ -22,16 +22,16 @@ class MahjongExecute
 
         // 2. 创建识别器实例
         var recognizer = new MahjongRecognizerWithFeatures(templates);
-        // using var sift = SIFT.Create();
-        using var surf = SURF.Create(200);
+        using var sift = SIFT.Create();
+        // using var surf = SURF.Create(200);
         using var bfMatcher = new BFMatcher();
         // using var flannMatcher = new FlannBasedMatcher();
         
-        // Recognize(recognizer, sift, bfMatcher);
+        Recognize(recognizer, sift, bfMatcher);
         // Recognize(recognizer, sift, flannMatcher);
 
-        Recognize(recognizer, surf, bfMatcher);
-        Recognize(recognizer, ORB.Create(), bfMatcher);
+        // Recognize(recognizer, surf, bfMatcher);
+        // Recognize(recognizer, ORB.Create(), bfMatcher);
         // Recognize(recognizer, surf, flannMatcher);
         
         Cv2.WaitKey();
