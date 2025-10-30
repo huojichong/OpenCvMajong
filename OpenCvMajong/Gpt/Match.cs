@@ -62,15 +62,15 @@ public class Match
                 
                 Console.WriteLine("scale:"+scale+" count:"+rects.Count);
                 Cv2.ImShow("big",big);
-                // Cv2.MinMaxLoc(result, out _, out double maxVal, out _, out Point maxLoc);
+                Cv2.MinMaxLoc(result, out _, out double maxVal, out _, out Point maxLoc);
 
-                // if (maxVal > bestScore)
-                // {
-                //     bestScore = maxVal;
-                //     bestScale = scale;
-                //     bestRect = new Rect(maxLoc.X, maxLoc.Y, resized.Width, resized.Height);
-                //     Cv2.ImShow("aled",result);
-                // }
+                if (maxVal > bestScore)
+                {
+                    bestScore = maxVal;
+                    bestScale = scale;
+                    bestRect = new Rect(maxLoc.X, maxLoc.Y, resized.Width, resized.Height);
+                    Cv2.ImShow("aled",result);
+                }
             }
 
         }
@@ -121,7 +121,7 @@ public class Match
         
             Console.WriteLine($"🔍 搜索 {Path.GetFileName(file)} ...");
         
-            for (double scale = 0.5; scale <= 1.5; scale += 0.05)
+            for (double scale = 0.7; scale <= 0.8; scale += 0.05)
             {
                 // var color = random.Next(0, 255);
                 int w = (int)(smallGray.Width * scale);

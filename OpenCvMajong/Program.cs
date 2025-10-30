@@ -7,8 +7,9 @@ class Program
     static void Main(string[] args)
     {
         
-        MahjongExecute.Execute();
+        // MahjongExecute.Execute();
 
+        Match.Entry2();
         
         // var mat = Cv2.ImRead("Pics/Daily_Mahjong_Match.jpg");
         // for (int i = 1005; i <= 1010; i+=10)

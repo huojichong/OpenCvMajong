@@ -17,7 +17,7 @@ class MahjongExecute
         foreach (var file in files)
         {
             var fileName = Path.GetFileNameWithoutExtension(file);
-            templates.Add(fileName, Cv2.ImRead(file));
+            templates.Add(fileName, Cv2.ImRead(file,ImreadModes.Grayscale));
         }
 
         // 2. 创建识别器实例
