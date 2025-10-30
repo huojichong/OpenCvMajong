@@ -213,9 +213,7 @@ public class MahjongClassifier
     // 返回 cellRects: an int[rows, cols*4] where for each (r,c) we store x,y,w,h
     bool TryDetectGrid(Mat board, out int rows, out int cols, out int[,] cellRects)
     {
-        
         rows = 0; cols = 0; cellRects = null;
-        return false;
         Mat gray = new Mat();
         Cv2.CvtColor(board, gray, ColorConversionCodes.BGR2GRAY);
         Mat bw = new Mat();

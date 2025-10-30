@@ -16,9 +16,6 @@
       <None Update="Pics\Daily_Mahjong_Match.jpg">
         <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       </None>
-      <None Update="Pics\snow.png">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
       <None Update="Cards\11.png">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>

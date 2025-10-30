@@ -1,22 +1,37 @@
 using OpenCvSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using OpenCvSharp.XFeatures2D;
+
+namespace OpenCvMajong.Qwen3;
 
 public class MahjongRecognizerWithFeatures
 {
     private readonly Dictionary<string, Mat> _templates; // 模板字典
-    private readonly Feature2D _detector; // 特征检测器
+    public Feature2D _detector { get; private set; } // 特征检测器
+    public DescriptorMatcher _matcher { get; private set; }
 
     public MahjongRecognizerWithFeatures(Dictionary<string, Mat> templates)
     {
         _templates = templates;
+    }
+
+    public MahjongRecognizerWithFeatures(Dictionary<string, Mat> templates,Feature2D detector, DescriptorMatcher mather)
+    {
+        this._templates = templates;
+        this._matcher = mather;
         // 修正：直接赋值 Feature2D 实例，不需要 Ptr<T>
-        _detector = OpenCvSharp.ORB.Create();
+        this._detector = detector;
         // 如果你想使用 SIFT (注意：SIFT 在 OpenCV 中可能需要非自由模块)
         // _detector = OpenCvSharp.SIFT.Create();
     }
-    public static Point2d Point2fToPoint2d(Point2f pf)
+    
+    public void SetupDetector(Feature2D detector, DescriptorMatcher mather)
+    {
+        this._matcher = mather;
+        // 修正：直接赋值 Feature2D 实例，不需要 Ptr<T>
+        this._detector = detector;
+    }
+    
+    static Point2d Point2fToPoint2d(Point2f pf)
     {
         return new Point2d(((int)pf.X), ((int)pf.Y));
     }
@@ -28,6 +43,8 @@ public class MahjongRecognizerWithFeatures
     /// <returns>二维数组，表示每个位置的牌面类型</returns>
     public string[,] RecognizeMahjongBoard(string  filepath)
     {
+        if(_matcher == null || _detector == null)
+            throw new InvalidOperationException("请先设置特征检测器和匹配器");
         // 1. 预处理：转换为灰度图
         var screenshot = Cv2.ImRead(filepath);
         Mat grayScreenshot = new Mat();
@@ -84,8 +101,7 @@ public class MahjongRecognizerWithFeatures
                         continue;
 
                     // 7. 使用 BFMatcher 进行特征匹配
-                    var matcher = new BFMatcher(NormTypes.Hamming, crossCheck: false);
-                    DMatch[] matches = matcher.Match(descriptorsCell, descriptorsTemplate);
+                    DMatch[] matches = this._matcher.Match(descriptorsCell, descriptorsTemplate);
 
                     // 8. 使用 RANSAC 筛选内点，提高匹配鲁棒性
                     if (matches.Length < 4) // 至少需要4个匹配点才能进行透视变换
@@ -137,13 +153,13 @@ public class MahjongRecognizerWithFeatures
                 result[row, col] = bestInlierCount > 5 ? bestMatch : "空"; // 阈值可以根据实际情况调整
 
                 // 可选：在原图上画框标记识别结果
-                Cv2.Rectangle(screenshot, new Point(col * cellWidth + boardRect.X, row * cellHeight + boardRect.Y),
-                              new Point((col + 1) * cellWidth + boardRect.X, (row + 1) * cellHeight + boardRect.Y),
-                              Scalar.Red, 2);
+                // Cv2.Rectangle(screenshot, new Point(col * cellWidth + boardRect.X, row * cellHeight + boardRect.Y),
+                //     new Point((col + 1) * cellWidth + boardRect.X, (row + 1) * cellHeight + boardRect.Y),
+                //     Scalar.Red, 2);
             }
         }
 
-        Cv2.ImShow("screen",screenshot);
+        // Cv2.ImShow("screen",screenshot);
         return result;
     }
 }
