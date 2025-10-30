@@ -42,13 +42,13 @@ public enum Cards
     GreenDrg = 46,
     WhiteDrg = 47,
     
-    Plum = 51,
-    Orchid = 52,
-    Chrysa = 53,
-    Bamboo = 54,
+    Plum = 51,  // 梅
+    Orchid = 52, // 兰
+    Bamboo = 53, // 竹
+    Chrysan = 54, // 菊
      
-    Spring = 61,
-    Summer = 62,
-    Autumn = 63,
-    Winter = 64,
+    Spring = 61, // 春
+    Summer = 62, // 夏
+    Autumn = 63, // 秋
+    Winter = 64, // 冬
 }

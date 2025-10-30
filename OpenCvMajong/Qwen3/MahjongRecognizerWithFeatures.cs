@@ -34,9 +34,10 @@ public class MahjongRecognizerWithFeatures
         Cv2.CvtColor(screenshot, grayScreenshot, ColorConversionCodes.BGR2GRAY);
 
         // 2. 定位棋盘区域 (这里需要你根据实际截图来确定棋盘的ROI)
-        Rect boardRect = new Rect(50, 100, 900, 700); // 示例坐标，请根据你的截图调整
+        Rect boardRect = new Rect(38, 570, 1005, 1210); // 示例坐标，请根据你的截图调整
         Mat boardRegion = grayScreenshot[boardRect];
 
+        Cv2.ImShow("board",boardRegion);
         // 3. 分割棋盘为一个个单元格
         int rows = 12;
         int cols = 10;
@@ -54,14 +55,14 @@ public class MahjongRecognizerWithFeatures
                 Rect cellRect = new Rect(col * cellWidth, row * cellHeight, cellWidth, cellHeight);
                 Mat cell = boardRegion[cellRect];
 
+                Cv2.ImWrite("tempBoard/"+row + "_" + col + ".png", cell);
                 // 5. 提取当前单元格的特征点
-                KeyPoint[] keypointsCell;
-                Mat descriptorsCell = new Mat();
-                _detector.DetectAndCompute(cell, null, out keypointsCell, descriptorsCell);
+                using var descriptorsCell = new Mat<double>();
+                _detector.DetectAndCompute(cell, null, out var keypointsCell, descriptorsCell);
 
-                if (keypointsCell.Length == 0 || descriptorsCell.Empty())
+                if (keypointsCell.Length == 0 || descriptorsCell.Rows ==0)
                 {
-                    result[row, col] = "空";
+                    result[row, col] = "Emp";
                     continue;
                 }
 
@@ -71,7 +72,7 @@ public class MahjongRecognizerWithFeatures
 
                 foreach (var kvp in _templates)
                 {
-                    string 牌名 = kvp.Key;
+                    string cardName = kvp.Key;
                     Mat template = kvp.Value;
 
                     // 提取模板的特征点
@@ -106,9 +107,9 @@ public class MahjongRecognizerWithFeatures
                     // 9. 使用 findHomography 和 RANSAC 筛选内点
                     try
                     {
-                        // Mat homography = new Mat();
+                        
                         Mat mask = new Mat();
-                        Cv2.FindHomography(srcList.Select(m=>new Point2d(m.X,m.Y)), dstList.Select(m => new Point2d(m.X,m.Y)), HomographyMethods.Ransac, 3.0, mask);
+                        Mat homography  = Cv2.FindHomography(srcList.Select(m=>new Point2d(m.X,m.Y)), dstList.Select(m => new Point2d(m.X,m.Y)), HomographyMethods.Ransac, 3.0,mask);
 
                         // 计算内点数量
                         int inlierCount = 0;
@@ -122,12 +123,12 @@ public class MahjongRecognizerWithFeatures
                         if (inlierCount > bestInlierCount)
                         {
                             bestInlierCount = inlierCount;
-                            bestMatch = 牌名;
+                            bestMatch = cardName;
                         }
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"RANSAC 匹配 {牌名} 时出错: {ex.Message}");
+                        Console.WriteLine($"RANSAC 匹配 {cardName} 时出错: {ex.Message}");
                         continue;
                     }
                 }
@@ -136,12 +137,13 @@ public class MahjongRecognizerWithFeatures
                 result[row, col] = bestInlierCount > 5 ? bestMatch : "空"; // 阈值可以根据实际情况调整
 
                 // 可选：在原图上画框标记识别结果
-                // Cv2.Rectangle(screenshot, new Point(col * cellWidth + boardRect.X, row * cellHeight + boardRect.Y),
-                //               new Point((col + 1) * cellWidth + boardRect.X, (row + 1) * cellHeight + boardRect.Y),
-                //               Scalar.Red, 2);
+                Cv2.Rectangle(screenshot, new Point(col * cellWidth + boardRect.X, row * cellHeight + boardRect.Y),
+                              new Point((col + 1) * cellWidth + boardRect.X, (row + 1) * cellHeight + boardRect.Y),
+                              Scalar.Red, 2);
             }
         }
 
+        Cv2.ImShow("screen",screenshot);
         return result;
     }
 }

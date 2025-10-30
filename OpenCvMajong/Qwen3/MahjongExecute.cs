@@ -1,3 +1,4 @@
+using OpenCvMajong;
 using OpenCvSharp;
 
 namespace MahjongRecognizer;
@@ -11,7 +12,7 @@ class MahjongBoard
         // 1. 加载所有模板图像
         var templates = new Dictionary<string, Mat>();
         // 这里需要你提供具体的模板文件路径
-        var files = Directory.GetFiles("Cards", "*.png");
+        var files = Directory.GetFiles("Out", "*.png");
         foreach (var file in files)
         {
             var fileName = Path.GetFileNameWithoutExtension(file);
@@ -29,7 +30,11 @@ class MahjongBoard
             {
                 for (int j = 0; j < board.GetLength(1); j++)
                 {
-                    Console.Write($"{board[i, j],-4} ");
+                    // Console.Write($"{board[i, j],-8} ");
+                    if (board[i, j] != SampleBoards.EaseBoard3[i, j].ToString())
+                    {
+                        Console.WriteLine($"{i}:{j} => recognize is {board[i, j]} , record is {SampleBoards.EaseBoard3[i, j]}");
+                    }
                 }
                 Console.WriteLine();
             }

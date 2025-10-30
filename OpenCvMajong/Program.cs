@@ -6,20 +6,20 @@ class Program
 {
     static void Main(string[] args)
     {
+        
+        var files = Directory.GetFiles("Cards", "*.png");
+        foreach (var file in files)
+        {
+            // Cards cards;
+            var fileName = Path.GetFileNameWithoutExtension(file);
+            var newName = (Cards)Convert.ToInt32(fileName);
+            var mat = Cv2.ImRead(file);
+            mat.ImWrite("Out/" + newName + ".png");
+            // File.Move(file,);
+        }
+        
         MahjongBoard.Execute(args:args);
-        
-        // var files = Directory.GetFiles("Cards", "*.png");
-        // foreach (var file in files)
-        // {
-        //     // Cards cards;
-        //     var fileName = Path.GetFileNameWithoutExtension(file);
-        //     var newName = (Cards)Convert.ToInt32(fileName);
-        //     var mat = Cv2.ImRead(file);
-        //     mat.ImWrite("Out/" + newName + ".png");
-        //     // File.Move(file,);
-        // }
-        
-        
+
         
         // var mat = Cv2.ImRead("Pics/Daily_Mahjong_Match.jpg");
         // for (int i = 1005; i <= 1010; i+=10)
