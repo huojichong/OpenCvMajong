@@ -74,11 +74,4 @@ public class GameBoard
         return Boards[posX * Width + posY];
     }
 
-    // 移动方格
-    public bool Move(Cards startPos,int moveCnt,Direction direction,int distance)
-    {
-        
-        
-        return false;
-    }
 }
