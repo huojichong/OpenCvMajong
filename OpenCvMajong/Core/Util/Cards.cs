@@ -51,4 +51,5 @@ public enum Cards
     Summer = 62, // 夏
     Autumn = 63, // 秋
     Winter = 64, // 冬
+    Guard = 0xff, //哨兵位
 }

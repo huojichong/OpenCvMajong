@@ -4,17 +4,23 @@ namespace OpenCvMajong.Core;
 
 public class GameLogic
 {
-    public GameBoard Board;
+    protected GameBoard Board;
     
     public GameLogic()
     {
         Board = new GameBoard();
+    }
+
+    public void SetBoard(GameBoard board)
+    {
+        this.Board = board;
     }
     
     public bool CheckMove(CardPos start, CardPos target, bool isVerMove)
     {
         if (isVerMove)// 纵向移动，
         {
+            // 坐标有点疑问？？？？？？
             {
                 // 移动之后的横方向没有空的，直接失败。
                 int stepHori = start.X - target.X > 0 ? -1 : 1;
@@ -39,9 +45,10 @@ public class GameLogic
                 }
             }
 
-            var moveDis = target.Y - start.Y;
+            // 待定？？？？
+            var moveDis = Math.Abs(target.Y - start.Y);
             // 移动路径
-            for (int j = firstEmpty - stepVert; j >= start.Y; j -= stepVert)
+            for (int j = 0 ; j >= moveDis || Board.GetCard(j+firstEmpty ,target.Y) != Cards.Guard; j += stepVert)
             {
                 
             }
